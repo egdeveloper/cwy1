@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<norms>
+  <test name="CommonBloodTest">
+    <indicator name="Hemoglobin">
+      <min error="10.0">120.0</min>
+      <max error="10.0">140.0</max>
+    </indicator>
+    <indicator name="RBCells">
+      <min error="0.5e12">3.7e12</min>
+      <max error="0.512">4.7e12</max>
+    </indicator>
+    <indicator name="ColorIndex">
+      <min error="0.1">0.85</min>
+      <max error="0.1">1.15</max>
+    </indicator>
+    <indicator name="ImRBCells">
+      <min error="0.1">0.2</min>
+      <max error="0.1">1.2</max>
+    </indicator>
+    <indicator name="Platelets">
+      <min error="20.0e9">180.0e9</min>
+      <max error="20.0e9">320.0e9</max>
+    </indicator>
+    <indicator name="ESR">
+      <min error="1.0">2</min>
+      <max error="3.0">15</max>
+    </indicator>
+    <indicator name="WBCells">
+      <min error="1.0e9">4.0e9</min>
+      <max error="2.0e9">9.0e9</max>
+    </indicator>
+    <indicator name="BandCells">
+      <min error="0.5">1</min>
+      <max error="1.0">6</max>
+    </indicator>
+    <indicator name="SegmentCells">
+      <min error="10.0">47.0</min>
+      <max error="10.0">72.0</max>
+    </indicator>
+    <indicator name="EosinCells">
+      <min error="0.0">0.0</min>
+      <max error="1.0">5.0</max>
+    </indicator>
+    <indicator name="Basophil">
+      <min error="0.0">0.0</min>
+      <max error="0.1">1</max>
+    </indicator>
+    <indicator name="NKCells">
+      <min error="5.0">18</min>
+      <max error="5.0">40</max>
+    </indicator>
+    <indicator name="MonoCells">
+      <min error="1.0">2.0</min>
+      <max error="2.0">9.0</max>
+    </indicator>
+  </test>
+  <test name="DailyExcreationTest">
+    <indicator name="Creatinine">
+      <min error="0.5">4.4</min>
+      <max error="2.0">17.26</max>
+    </indicator>
+    <indicator name="Urea">
+      <min error="30.0">333.0</min>
+      <max error="60.0">582.8</max>
+    </indicator>
+    <indicator name="UreaAcid">
+      <min error="0.2">1.62</min>
+      <max error="0.3">3.6</max>
+    </indicator>
+    <indicator name="Calcium">
+      <min error="0.2">2.5</min>
+      <max error="0.7">7.5</max>
+    </indicator>
+    <indicator name="Potassium">
+      <min error="3.0">30.0</min>
+      <max error="10.0">100.0</max>
+    </indicator>
+    <indicator name="Magnesium">
+      <min error="0.05">0.5</min>
+      <max error="0.5">4.2</max>
+    </indicator>
+    <indicator name="Sodium">
+      <min error="10.0">130.0</min>
+      <max error="30.0">260.0</max>
+    </indicator>
+    <indicator name="PhosphorOxide">
+      <min error="1.5">12.9</min>
+      <max error="5.0">40</max>
+    </indicator>
+    <indicator name="Chlorine">
+      <min error="11.0">110.0</min>
+      <max error="25.0">250.0</max>
+    </indicator>
+  </test>
+  <test name="BioChemTest">
+    <indicator name="CommonProtein">
+      <min error="10.0">66.0</min>
+      <max error="10.0">87.0</max>
+    </indicator>
+    <indicator name="Urea">
+      <min error="0.5">1.7</min>
+      <max error="0.5">8.3</max>
+    </indicator>
+    <indicator name="Creatinine">
+      <min error="10.0">53.0</min>
+      <max error="10.0">115.0</max>
+    </indicator>
+    <indicator name="CommonBiliRuby">
+      <min error="0.5">2.0</min>
+      <max error="3.0">21.0</max>
+    </indicator>
+    <indicator name="LinkedBiliRuby">
+      <min error="0.0">0.0</min>
+      <max error="0.5">34.0</max>
+    </indicator>
+    <indicator name="Cholesterol">
+      <min error="0.5">3.63</min>
+      <max error="0.5">5.2</max>
+    </indicator>
+    <indicator name="TAG">
+      <min error="0.0">0.0</min>
+      <max error="0.1">1.7</max>
+    </indicator>
+    <indicator name="HDL">
+      <min error="0.1">0.9</min>
+      <max error="0.1">1.54</max>
+    </indicator>
+    <indicator name="LDL">
+      <min error="0.2">1.2</min>
+      <max error="0.2">4.4</max>
+    </indicator>
+    <indicator name="CholesterolRatio">
+      <min error="0.0">0.0</min>
+      <max error="0.2">3.0</max>
+    </indicator>
+    <indicator name="ALT">
+      <min error="0.0">0.0</min>
+      <max error="5.0">42</max>
+    </indicator>
+    <indicator name="AST">
+      <min error="0.0">0.0</min>
+      <max error="5.0">37.0</max>
+    </indicator>
+    <indicator name="ALKP">
+      <min error="10.0">80.0</min>
+      <max error="30.0">306.0</max>
+    </indicator>
+    <indicator name="CK">
+      <min error="10.0">24.0</min>
+      <max error="20.0">190.0</max>
+    </indicator>
+    <indicator name="CKMB">
+      <min error="0.0">0.0</min>
+      <max error="3.0">25.0</max>
+    </indicator>
+    <indicator name="LDH">
+      <min error="30.0">225.0</min>
+      <max error="30.0">450.0</max>
+    </indicator>
+    <indicator name="GGT">
+      <min error="5.0">11.0</min>
+      <max error="5.0">61.0</max>
+    </indicator>
+    <indicator name="Amylase">
+      <min error="5.0">28.0</min>
+      <max error="10.0">100.0</max>
+    </indicator>
+    <indicator name="PancrAmylase">
+      <min error="0.0">0.0</min>
+      <max error="5.0">53.0</max>
+    </indicator>
+    <indicator name="Glucose">
+      <min error="0.5">4.2</min>
+      <max error="0.5">6.4</max>
+    </indicator>
+    <indicator name="UreaAcid">
+      <min error="50.0">200.0</min>
+      <max error="50.0">420.0</max>
+    </indicator>
+    <indicator name="CRP">
+      <min error="0.0">0.0</min>
+      <max error="0.5">5.0</max>
+    </indicator>
+    <indicator name="RF">
+      <min error="0.0">0.0</min>
+      <max error="5.0">40.0</max>
+    </indicator>
+    <indicator name="Potassium">
+      <min error="0.5">3.5</min>
+      <max error="0.5">5.1</max>
+    </indicator>
+    <indicator name="Sodium">
+      <min error="2.0">136.0</min>
+      <max error="2.0">145.0</max>
+    </indicator>
+    <indicator name="Chlorine">
+      <min error="2.0">98.0</min>
+      <max error="2.0">107.0</max>
+    </indicator>
+    <indicator name="CommonCalcium">
+      <min error="0.1">2.02</min>
+      <max error="0.1">2.6</max>
+    </indicator>
+    <indicator name="IonCalcium">
+      <min error="0.05">1.16</min>
+      <max error="0.05">1.32</max>
+    </indicator>
+    <indicator name="Phosphor">
+      <min error="0.1">0.81</min>
+      <max error="0.1">1.62</max>
+    </indicator>
+    <indicator name="Ferrum">
+      <min error="2.0">10.7</min>
+      <max error="2.0">28.6</max>
+    </indicator>
+    <indicator name="Ferritin">
+      <min error="5.0">31.5</min>
+      <max error="20.0">231.7</max>
+    </indicator>
+  </test>
+  <test name="UreaColorTest">
+    <indicator name="ClSalt">
+      <min error="20.0">180.0</min>
+      <max error="30.0">282.0</max>
+    </indicator>
+    <indicator name="NO2Salt">
+      <min error="0.05">0.0</min>
+      <max error="0.05">0.0</max>
+    </indicator>
+    <indicator name="NO3Salt">
+      <min error="0.1">0.8</min>
+      <max error="0.2">2.26</max>
+    </indicator>
+    <indicator name="SO3Salt">
+      <min error="3.0">26.6</min>
+      <max error="4.0">42.0</max>
+    </indicator>
+    <indicator name="PO3Salt">
+      <min error="1.0">10.5</min>
+      <max error="6.0">68.0</max>
+    </indicator>
+    <indicator name="Citrate">
+      <min error="0.2">2.4</min>
+      <max error="0.5">5.3</max>
+    </indicator>
+    <indicator name="IsoCitrate">
+      <min error="0.07">0.7</min>
+      <max error="0.2">2.0</max>
+    </indicator>
+    <indicator name="UreaAcid">
+      <min error="0.6">6.5</min>
+      <max error="1.3">13.0</max>
+    </indicator>
+    <indicator name="DUV">
+      <min error="80.0">800.0</min>
+      <max error="150.0">1500.0</max>
+    </indicator>
+  </test>
+  <test name="TitrationTest">
+    <indicator name="Oxalate">
+      <min error="0.03">0.3</min>
+      <max error="0.07">0.7</max>
+    </indicator>
+  </test>
+</norms>

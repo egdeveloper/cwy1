@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="SanusVitae.CommonBloodTestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="402" d:DesignWidth="556">
+    <Grid x:Name="ОкноПоказателей" Margin="0,0,0,0" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="61*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="161*"/>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="76*"/>
+            <ColumnDefinition Width="146*"/>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Гемоглобин" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="88" Grid.Row="1" FontSize="14"/>
+        <Label Content="Эритроциты" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Row="2" Height="29" Width="105" FontSize="14"/>
+        <Label Content="Цветовой показатель" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Row="3" Height="26" Width="152" FontSize="14"/>
+        <Label Content="Ретикулоциты" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Row="4" Height="26" Width="105" FontSize="14"/>
+        <Label Content="Тромбоциты" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Row="5" Height="26" Width="105" FontSize="14"/>
+        <Label Content="СОЭ" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Row="6" Height="26" Width="46" FontSize="14"/>
+        <Label Content="Лейкоциты" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Row="7" Height="26" Width="88" FontSize="14"/>
+        <TextBox Text="{Binding Hemoglobin, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Margin="0,9,0,9" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1" FontSize="14"/>
+        <Label Content="Палочкоядерные" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Row="8" Height="26" Width="123" FontSize="14"/>
+        <TextBox Text="{Binding RBCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" FontSize="14"/>
+        <TextBox Text="{Binding ColorIndex, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" FontSize="14"/>
+        <TextBox Text="{Binding ImRBCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1" FontSize="14"/>
+        <TextBox Text="{Binding Platelets, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Margin="0,9,0,10" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" FontSize="14"/>
+        <TextBox Text="{Binding ESR, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1" FontSize="14"/>
+        <TextBox Text="{Binding WBCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="7" Grid.Column="1" FontSize="14"/>
+        <TextBox Text="{Binding BandCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="8" Grid.Column="1" FontSize="14"/>
+        <Label Content="Сегментноядерные" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="139" Grid.Row="1" FontSize="14" Grid.ColumnSpan="2"/>
+        <TextBox Text="{Binding SegmentCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1" FontSize="14"/>
+        <Label Content="Эозинофилы" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Grid.Row="2" Height="26" Width="94" FontSize="14"/>
+        <TextBox Text="{Binding EosinCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="2" FontSize="14"/>
+        <Label Content="Базофилы" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Grid.Row="3" Height="26" Width="81" FontSize="14"/>
+        <TextBox Text="{Binding Basophil, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="3" FontSize="14"/>
+        <Label Content="Лимфоциты" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Grid.Row="4" Height="26" Width="94" FontSize="14"/>
+        <TextBox Text="{Binding NKCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="4" FontSize="14"/>
+        <Label Content="Моноциты" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Grid.Row="5" Height="26" Width="81" FontSize="14"/>
+        <TextBox Text="{Binding MonoCells, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="5" FontSize="14"/>
+        <Label Content="Г/л" HorizontalAlignment="Stretch" Margin="0,9,0,9" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="1" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Клеток/л" HorizontalAlignment="Stretch" Margin="0,9,0,7" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="2" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Клеток/л" HorizontalAlignment="Stretch" Margin="0,9,0,4" VerticalAlignment="Stretch" Grid.Row="5" Grid.Column="2" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Клеток/л" HorizontalAlignment="Stretch" Margin="0,9,0,0" VerticalAlignment="Stretch" Grid.Row="7" Grid.Column="2" FontWeight="Bold" FontSize="14"/>
+        <Label Content="%" HorizontalAlignment="Stretch" Margin="0,9,0,4" VerticalAlignment="Stretch" Grid.Row="4" Grid.Column="2" FontWeight="Bold" FontSize="14"/>
+        <Label Content="%" HorizontalAlignment="Stretch" Margin="0,9,0,9" VerticalAlignment="Stretch" Grid.Row="8" Grid.Column="2" FontWeight="Bold" FontSize="14"/>
+        <Label Content="%" HorizontalAlignment="Left" Margin="0,9,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="31" Grid.Row="1" FontWeight="Bold" FontSize="14"/>
+        <Label Content="%" HorizontalAlignment="Left" Margin="0,9,0,0" VerticalAlignment="Top" Grid.Column="5" Grid.Row="2" Height="26" Width="31" FontWeight="Bold" FontSize="14"/>
+        <Label Content="%" HorizontalAlignment="Left" Margin="0,9,0,0" VerticalAlignment="Top" Grid.Column="5" Grid.Row="3" Height="26" Width="31" FontWeight="Bold" FontSize="14"/>
+        <Label Content="%" HorizontalAlignment="Left" Margin="0,9,0,0" VerticalAlignment="Top" Grid.Column="5" Grid.Row="4" Height="26" Width="31" FontWeight="Bold" FontSize="14"/>
+        <Label Content="%" HorizontalAlignment="Left" Margin="0,9,0,0" VerticalAlignment="Top" Grid.Column="5" Grid.Row="5" Height="26" Width="31" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Мм/ч" HorizontalAlignment="Stretch" Margin="0,9,0,7" VerticalAlignment="Stretch" Grid.Row="6" Grid.Column="2" FontWeight="Bold" FontSize="14"/>
+    </Grid>
+</UserControl>

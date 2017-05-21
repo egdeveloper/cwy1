@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<chem_info>
+  <test name="DailyExcreationTest">
+    <component name="Creatinine" moles_mass="113.0"/>
+    <component name="Urea" moles_mass="60.0"/>
+    <component name="UreaAcid" moles_mass="168.0"/>
+    <component name="Calcium" moles_mass="40.0"/>
+    <component name="Potassium" moles_mass="39.0"/>
+    <component name="Magnesium" moles_mass="24.0"/>
+    <component name="Sodium" moles_mass="23.0"/>
+    <component name="PhosphorOxide" moles_mass="95.0"/>
+    <component name="Chlorine" moles_mass="35.5"/>
+  </test>
+  <test name="UreaColorTest">
+    <component name="ClSalt" moles_mass="35.5"/>
+    <component name="NO2Salt" moles_mass="46.0"/>
+    <component name="NO3Salt" moles_mass="62.0"/>
+    <component name="SO3Salt" moles_mass="96.0"/>
+    <component name="PO3Salt" moles_mass="95.0"/>
+    <component name="Citrate" moles_mass="189.0"/>
+    <component name="IsoCitrate" moles_mass="189.0"/>
+    <component name="UreaAcid" moles_mass="168.0"/>
+  </test>
+</chem_info>

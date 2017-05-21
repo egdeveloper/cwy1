@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="SanusVitae.TitrationTestPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="46" Width="325">
+    <Grid Name="gridIndicators" Background="White" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="74*"/>
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="91*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Оксалат" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="54"/>
+        <TextBox Text="{Binding Oxalate, StringFormat={}{0:G5}, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Ммоль/сут" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Grid.Column="2" FontWeight="Bold" Height="26" Width="81"/>
+    </Grid>
+</UserControl>

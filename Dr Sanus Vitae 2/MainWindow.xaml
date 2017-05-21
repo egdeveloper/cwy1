@@ -1,0 +1,150 @@
+﻿<RibbonWindow x:Class="SanusVitae.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" Title="Программа для выявления МКБ"
+        Height="816" Width="1256" MinHeight="816" MinWidth="1256">
+    <RibbonWindow.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}"
+                        x:Key="AlignmentValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="HorizontalAlignment" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <Image x:Key="SearchIcon" Source="icons/search_button.png"/>
+        <Image x:Key="ClearIcon" Source="icons/clear_button.png"/>
+    </RibbonWindow.Resources>
+    <Grid Margin="0,0,0,-4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="523*"/>
+            <RowDefinition Height="265*"/>
+        </Grid.RowDefinitions>
+        <Ribbon Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.RowSpan="2">
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu>
+                    <RibbonApplicationMenuItem ImageSource="icons/db_connect.png" Header="Открыть БД пациентов" Click="buttonDBConnect_Click"/>
+                    <RibbonApplicationMenuItem ImageSource="icons/db_save.png" Header="Сохранить БД пациентов" Click="buttonDBSave_Click"/>
+                    <RibbonApplicationMenuItem ImageSource="icons/about2.png" Header="О приложении" Click="buttonAboutApplication_Click"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Пациенты">
+                <RibbonGroup Header="База данных">
+                    <RibbonButton x:Name="buttonDBConnect" LargeImageSource="icons/db_connect.png" Label="Открыть БД пациентов" Click="buttonDBConnect_Click" ToolTip="Открыть существующий файл БД"/>
+                    <RibbonButton x:Name="buttonDBSave" LargeImageSource="icons/db_save.png" Label="Сохранить БД пациентов" Click="buttonDBSave_Click" ToolTip="Сохранить текущий файл БД"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Записи пациентов">
+                    <RibbonButton x:Name="buttonAddPatient" LargeImageSource="icons/add_patient.png" Label="Создать медкарту" Click="buttonAddPatient_Click" ToolTip="Добавить медкарту пациента в БД"/>
+                    <RibbonButton x:Name="buttonRemovePatient" LargeImageSource="icons/remove_patient.png" Label="Удалить медкарту" Command="{StaticResource RemovePatient}" ToolTip="Удалить выбранную медкарту пациента"/>
+                    <RibbonButton x:Name="buttonOpenPatientProfile" LargeImageSource="icons/edit_patient.png" Label="Открыть медкарту пациента" Command="{StaticResource OpenPatient}" ToolTip="Открыть выбранную медкарту пациента"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Поиск записей пациентов" Margin="0,1" Width="220">
+                    <TextBox x:Name="textboxSearchFilter" HorizontalAlignment="Stretch" Margin="0,10,-176,-10" Width="170"/>
+                    <Button x:Name="buttonSearchPatient" Content="{StaticResource SearchIcon}" HorizontalAlignment="Right" Width="23" Height="23" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="buttonSearchPatients_Click" RenderTransformOrigin="3.609,0.826" Margin="0,-14,-200,-3"/>
+                    <RadioButton Name="flagName" Content="ФИО" Margin="10,10,-10,-10"/>
+                    <RadioButton Name="flagCardNumber" Content="Номер карты" Margin="82,-6,-82,6" />
+                </RibbonGroup>
+                <RibbonGroup Header="Анализы">
+                    <RibbonButton x:Name="buttonAddTest" Label="Добавить анализы" LargeImageSource="icons/analysis.png" Command="{StaticResource AddTest}" ToolTip="Добавить данные проведенного анализа"/>
+                    <RibbonButton x:Name="buttonShowTestHistory" Label="Открыть историю анализов" LargeImageSource="icons/calendar.png" Click="buttonShowTestHistory_Click" ToolTip="Открыть историю проведенных обследований"/>
+                    <RibbonButton x:Name="buttonViewDynamics" Label="Показать динамику" LargeImageSource="icons/health2.png" Command="{StaticResource PlotGraph}" ToolTip="Построить график динамики основных показателей"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Приложение">
+                    <RibbonButton x:Name="buttonClose" Label="Завершить" LargeImageSource="icons/close.png" Click="buttonClose_Click" ToolTip="Завершить программу"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Помощь">
+                <RibbonGroup>
+                    <RibbonButton x:Name="buttonAboutApplication" Click="buttonAboutApplication_Click" LargeImageSource="icons/about2.png" Label="О приложении" ToolTip="Открыть информацию о программе"/>
+                    <RibbonButton x:Name="buttonGetHelp" LargeImageSource="icons/help.png" Label="Помощь" Click="buttonGetHelp_Click" ToolTip="Открыть справку по программе"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <DataGrid x:Name="datagridPatientList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanUserAddRows="False" RowBackground="LightGray" AlternatingRowBackground="White" HorizontalGridLinesBrush="DarkGray" Loaded="datagridPatientList_Updated" SelectionChanged="datagridPatientList_SelectionChanged" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.CommandBindings>
+                <CommandBinding Command="{StaticResource OpenPatient}" CanExecute="DBCommands_CanExecute" Executed="OpenPatient_Command_Executed"/>
+                <CommandBinding Command="{StaticResource AddPatient}" CanExecute="DBCommands_CanExecute" Executed="DBInsert_Command_Executed"/>
+                <CommandBinding Command="{StaticResource RemovePatient}" CanExecute="DBCommands_CanExecute" Executed="RemovePatient_Command_Executed"/>
+                <CommandBinding Command="{StaticResource AddTest}" CanExecute="DBCommands_CanExecute" Executed="AddTest_Command_Executed"/>
+                <CommandBinding Command="{StaticResource PlotGraph}" CanExecute="DBCommands_CanExecute" Executed="PlotGraph_Command_Executed"/>
+            </DataGrid.CommandBindings>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Width="3*" Binding="{Binding LastName, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Имя" Width="3*" Binding="{Binding FirstName, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Отчество" Width="3*" Binding="{Binding Patronym, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Пол" Width="2*" Binding="{Binding Sex, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Телефон" Width="3*" Binding="{Binding PhoneNumber, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Адрес" Width="4*" Binding="{Binding Address, Mode=OneWay}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridHyperlinkColumn Header="E-mail" Width="3*" Binding="{Binding Email, Mode=OneWay}">
+                    <DataGridHyperlinkColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"/>
+                        </Style>
+                    </DataGridHyperlinkColumn.ElementStyle>
+                </DataGridHyperlinkColumn>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Открыть профиль"  Command="{StaticResource OpenPatient}"/>
+                    <MenuItem Header="Добавить пациента" Click="buttonAddPatient_Click"/>
+                    <MenuItem Header="Удалить пациента" Command="{StaticResource RemovePatient}"/>
+                    <MenuItem Header="Отправить сообщение"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <Grid x:Name="ЛичныеДанныеПациента" HorizontalAlignment="Stretch" Margin="0,139,0,0" VerticalAlignment="Stretch" Grid.Row="0" Background="Beige">
+
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="184" Margin="22,68,0,0" VerticalAlignment="Top" Width="155">
+                <Image x:Name="pictureboxPatientPhoto" Source="{Binding Avatar}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Fill"/>
+            </Border>
+            <Label Content="Фамилия" HorizontalAlignment="Left" Margin="208,20,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="ФамилияПолеВвода" Text="{Binding LastName, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="208,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+            <Label Content="Имя" HorizontalAlignment="Left" Margin="208,68,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="ИмяПолеВвода" Text="{Binding FirstName, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="208,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+            <Label Content="Отчество" HorizontalAlignment="Left" Margin="207,126,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="ОтчествоПолеВвода" Text="{Binding Patronym, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="24" Margin="209,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+            <Label Content="Пол" HorizontalAlignment="Left" Margin="209,189,0,0" VerticalAlignment="Top"/>
+            <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="209,268,0,0" VerticalAlignment="Top"/>
+            <DatePicker x:Name="ДатаРождения" SelectedDate="{Binding Birthdate}" HorizontalAlignment="Left" Margin="209,299,0,0" VerticalAlignment="Top" Width="184"/>
+            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="37" Margin="208,215,0,0" VerticalAlignment="Top" Width="184">
+                <Grid>
+                    <RadioButton x:Name="МужскойКнопка" Content="Мужской" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                    <RadioButton x:Name="ЖенскийКнопка" Content="Женский" HorizontalAlignment="Left" Margin="111,10,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                </Grid>
+            </Border>
+            <Label Content="Домашний телефон" HorizontalAlignment="Left" Margin="607,20,0,0" VerticalAlignment="Top" Width="122"/>
+            <TextBox x:Name="ДомашнийТелефонПолеВвода" Text="{Binding PhoneNumber, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="607,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+            <Label Content="Страна" HorizontalAlignment="Left" Margin="421,68,0,0" VerticalAlignment="Top" Width="55"/>
+            <TextBox x:Name="СтранаПолеВвода" Text="{Binding Country, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="421,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+            <Label Content="Регион" HorizontalAlignment="Left" Margin="421,126,0,0" VerticalAlignment="Top" Width="55"/>
+            <TextBox x:Name="РегионПолеВвода" Text="{Binding City, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="421,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+            <Label Content="Населенный пункт" HorizontalAlignment="Left" Margin="421,189,0,0" VerticalAlignment="Top" Width="116"/>
+            <TextBox x:Name="НаселенныйПунктПолеВвода" Text="{Binding Region, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="421,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+            <Label Content="Почтовый индекс" HorizontalAlignment="Left" Margin="421,20,0,0" VerticalAlignment="Top" Width="103"/>
+            <TextBox x:Name="ПочтовыйИндексПолеВвода" Text="{Binding PostIndex, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="421,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+            <Label Content="Адрес проживания" HorizontalAlignment="Left" Margin="421,250,0,0" VerticalAlignment="Top" Width="116"/>
+            <TextBox x:Name="АдресПроживанияПолеВвода" Text="{Binding Address, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="56" Margin="421,276,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="370"/>
+            <Label Content="Электронный адрес" HorizontalAlignment="Left" Margin="607,68,0,0" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="ЭлектронныйАдресПолеВвода" Text="{Binding Email, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="607,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+            <Label Content="Паспортные данные" HorizontalAlignment="Left" Margin="607,126,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding Passport, Mode=TwoWay}" IsReadOnly="True" Height="69" Margin="607,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+            <Label Content="Номер карты:" HorizontalAlignment="Left" Margin="22,268,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding CardNumber, Mode=TwoWay}" Height="23" Margin="22,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
+            <Label Content="Место работы" HorizontalAlignment="Left" Margin="811,20,0,0" VerticalAlignment="Top" Width="122"/>
+            <TextBox  Text="{Binding JobPlace, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="105" Margin="811,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184"/>
+            <Label Content="Должность" HorizontalAlignment="Left" Margin="1010,78,0,0" VerticalAlignment="Top" Width="122"/>
+            <TextBox Text="{Binding Post}" IsReadOnly="True" HorizontalAlignment="Left" Height="43" Margin="1010,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+            <Label Content="Профессия" HorizontalAlignment="Left" Margin="1010,20,0,0" VerticalAlignment="Top" Width="122"/>
+            <TextBox  Text="{Binding Occupation, Mode=TwoWay}" IsReadOnly="True" HorizontalAlignment="Left" Height="22" Margin="1010,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+            <Label Content="Полис ОМС" HorizontalAlignment="Left" Margin="811,163,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding OMICard, Mode=TwoWay}" IsReadOnly="True" Height="53" Margin="811,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="412"/>
+            <Label Content="ИНН" HorizontalAlignment="Left" Margin="811,253,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Text="{Binding TIN, Mode=TwoWay}" IsReadOnly="True" Height="27" Margin="811,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="412"/>
+        </Grid>
+    </Grid>
+</RibbonWindow>

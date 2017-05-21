@@ -1,0 +1,23 @@
+﻿<Window x:Class="SanusVitae.EmailSenderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EmailSenderWindow" Height="370" Width="437">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="293*"/>
+            <ColumnDefinition Width="136*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="106*"/>
+            <RowDefinition Height="21*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Кому:" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top"/>
+        <Label Content="Тема письма:" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="textboxAddressee" HorizontalAlignment="Left" Height="23" Margin="93,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Grid.ColumnSpan="2"/>
+        <TextBox Name="textboxSubject" HorizontalAlignment="Left" Height="23" Margin="93,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" Grid.ColumnSpan="2"/>
+        <TextBox Name="textboxMessageBody" HorizontalAlignment="Stretch" Height="192" Margin="9,9,9,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Button Name="buttonSend" Content="Отправить" HorizontalAlignment="Center" Margin="8,8,8,8" VerticalAlignment="Top" Width="118" Click="buttonSend_Click" Grid.Row="2" Grid.Column="1"/>
+
+    </Grid>
+</Window>

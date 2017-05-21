@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78FF5452-7DAA-4B11-9D56-0BC5FA32541F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SanusVitae</RootNamespace>
+    <AssemblyName>Программа для выявления МКБ</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons\AppIcon256.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocX">
+      <HintPath>..\packages\DocX.1.0.0.13\lib\net40\DocX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Design.Extensibility, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.96.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.96.0\lib\net451\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.40619.1\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit.Design.4.0, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit.Expression.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.40619.1\System.Windows.Controls.DataVisualization.Toolkit.Expression.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit.VisualStudio.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.40619.1\System.Windows.Controls.DataVisualization.Toolkit.VisualStudio.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.50211.1\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="system.windows.controls.ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.50211.1\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFToolkit.VisualStudio.Design, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\WPF Toolkit\v3.5.50211.1\WPFToolkit.VisualStudio.Design.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AboutApplicationWindow.xaml.cs">
+      <DependentUpon>AboutApplicationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentGenerator.cs" />
+    <Compile Include="DynamicsWindow.xaml.cs">
+      <DependentUpon>DynamicsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataAttributes\Length.cs" />
+    <Compile Include="Model\DataAttributes\NotNull.cs" />
+    <Compile Include="Model\DataAttributes\Null.cs" />
+    <Compile Include="Model\DataAttributes\PrimaryKey.cs" />
+    <Compile Include="Model\DataAttributes\TestInfo.cs" />
+    <Compile Include="Model\DataConverters\PatientConverter.cs" />
+    <Compile Include="Model\DataConverters\TestConverter.cs" />
+    <Compile Include="Model\Entites\Attachment.cs" />
+    <Compile Include="Model\Entites\MedicalTest.cs" />
+    <Compile Include="CommonUreaTestPage.xaml.cs">
+      <DependentUpon>CommonUreaTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EmailSenderWindow.xaml.cs">
+      <DependentUpon>EmailSenderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InputBox.xaml.cs">
+      <DependentUpon>InputBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IDataContextProvider.cs" />
+    <Compile Include="Model\Entites\BioChemTest.cs" />
+    <Compile Include="Model\Entites\CommonBloodTest.cs" />
+    <Compile Include="Model\Entites\CommonUreaTest.cs" />
+    <Compile Include="Model\Entites\DailyExcreationTest.cs" />
+    <Compile Include="Model\Entites\Person.cs" />
+    <Compile Include="Model\Entites\TitrationTest.cs" />
+    <Compile Include="Model\DataAttributes\Transient.cs" />
+    <Compile Include="Model\Entites\UreaColorTest.cs" />
+    <Compile Include="Model\Entites\UreaStoneTest.cs" />
+    <Compile Include="PasswordUpdate.xaml.cs">
+      <DependentUpon>PasswordUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entites\Patient.cs" />
+    <Compile Include="BiochemBloodTestPage.xaml.cs">
+      <DependentUpon>BiochemBloodTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommonBloodTestPage.xaml.cs">
+      <DependentUpon>CommonBloodTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cryptor.cs" />
+    <Compile Include="Model\PatientDB.cs" />
+    <Compile Include="Model\SettingsManager.cs" />
+    <Compile Include="Singleton.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalPatientWindow.xaml.cs">
+      <DependentUpon>PersonalPatientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignUpWindow.xaml.cs">
+      <DependentUpon>SignUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DailyExcreationTestPage.xaml.cs">
+      <DependentUpon>DailyExcreationTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorTestPage.xaml.cs">
+      <DependentUpon>ColorTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestHistoryWindow.xaml.cs">
+      <DependentUpon>TestHistoryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TitrationTestPage.xaml.cs">
+      <DependentUpon>TitrationTestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UreaStoneTestPage.xaml.cs">
+      <DependentUpon>UreaStoneTestPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AboutApplicationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BiochemBloodTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommonBloodTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommonUreaTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DynamicsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmailSenderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InputBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PasswordUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PersonalPatientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DailyExcreationTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ColorTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TitrationTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UreaStoneTestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Resource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <EmbeddedResource Include="help\Help.chm" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\Img\ComputerMed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\about.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\about2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\add_patient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\computermed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\edit_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\excel_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\help.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\home.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\pdf_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\printer.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\remove_patient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\settings.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Library\word_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\about.PNG" />
+    <Resource Include="icons\about2.PNG" />
+    <Resource Include="icons\add_patient.png" />
+    <Resource Include="icons\computermed.jpg" />
+    <Resource Include="icons\edit_patient.png" />
+    <Resource Include="icons\excel_file.png" />
+    <Resource Include="icons\help.PNG" />
+    <Resource Include="icons\home.PNG" />
+    <Resource Include="icons\pdf_file.png" />
+    <Resource Include="icons\printer.PNG" />
+    <Resource Include="icons\remove_patient.png" />
+    <Resource Include="icons\settings.PNG" />
+    <Resource Include="icons\word_file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\analysis.png" />
+    <Resource Include="icons\patient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\health2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="med_data\Norms.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="med_data\ChemInfo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\clear_button.png" />
+    <Resource Include="icons\search_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\add_procedure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\add.png" />
+    <Resource Include="icons\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppIcon2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\AppIcon16.ico" />
+    <Resource Include="icons\AppIcon256.ico" />
+    <Resource Include="icons\AppIcon32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\db_connect.png" />
+    <Resource Include="icons\db_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\HSE.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.96.0\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.96.0\build\net451\System.Data.SQLite.Core.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

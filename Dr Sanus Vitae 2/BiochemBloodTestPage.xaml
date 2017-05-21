@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="SanusVitae.BiochemBloodTestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" d:DesignWidth="680" d:DesignHeight="589">
+    <Grid x:Name="ОкноПоказаталей"  Margin="0" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="41*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="171*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="73*"/>
+            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="64*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Общий белок" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="86"/>
+        <TextBox Text="{Binding CommonProtein, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Мочевина" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="67" Grid.Row="1"/>
+        <TextBox Text="{Binding Urea, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Креатинин" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="69" Grid.Row="2"/>
+        <TextBox Text="{Binding Creatinine, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Margin="0,9,0,8" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Билурубин общий" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="111" Grid.Row="3" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding CommonBiliRuby, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="3" Grid.Column="1"/>
+        <Label Content="Билурибин связанный" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="133" Grid.Row="4" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding LinkedBiliRuby, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="4" Grid.Column="1"/>
+        <Label Content="Холестерин" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="74" Grid.Row="5"/>
+        <TextBox Text="{Binding Cholesterol, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="5" Grid.Column="1"/>
+        <Label Content="Триглицериды" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="91" Grid.Row="6"/>
+        <TextBox Text="{Binding TAG, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="6" Grid.Column="1"/>
+        <Label Content="Аланиноаминотрансфераза" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="163"/>
+        <TextBox Text="{Binding ALT, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4"/>
+        <Label Content="Аспартаминотранфераза" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="148" Grid.Row="1"/>
+        <TextBox Text="{Binding AST, StringFormat={}{0:F2}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
+        <Label Content="Щелочная фосфотаза" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="129" Grid.Row="2"/>
+        <TextBox Text="{Binding ALKP, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="2"/>
+        <Label Content="Креатинофосфокиназа" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="136" Grid.Row="3" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding CK, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Column="4" Grid.Row="3"/>
+        <Label Content="Креатинофосфокиназа МВ" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="157" Grid.Row="4" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding CKMB, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="4"/>
+        <Label Content="Лактатдегидрогеназа" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="127" Grid.Row="5"/>
+        <TextBox Text="{Binding LDH, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="5"/>
+        <Label Content="ГГТ" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="28" Grid.Row="6"/>
+        <TextBox Text="{Binding GGT, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="6"/>
+        <Label Content="Липопр. Выс. Плотности" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="144" Grid.Row="7"/>
+        <TextBox Text="{Binding HDL, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="7" Grid.Column="1"/>
+        <Label Content="Амилаза" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="57" Grid.Row="7"/>
+        <TextBox Text="{Binding Amylase, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="7"/>
+        <Label Content="Липопр. Низ. Плотности" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="144" Grid.Row="8"/>
+        <TextBox Text="{Binding LDL, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Row="8" Grid.Column="1"/>
+        <Label Content="Коэф. Атерогенности" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="126" Grid.Row="9" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding CholesterolRatio, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="9" Grid.Column="1"/>
+        <Label Content="Панкреатическая амилаза" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="154" Grid.Row="8"/>
+        <TextBox Text="{Binding PancrAmylase, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="8"/>
+        <Label Content="Глюкоза" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="56" Grid.Row="9" Grid.RowSpan="2"/>
+        <TextBox Text="{Binding Glucose, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="9"/>
+        <Label Content="Мочевая кислота" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="106" Grid.Row="10"/>
+        <TextBox Text="{Binding UreaAcid, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="10" Grid.Column="1"/>
+        <Label Content="С-реактивный белок" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="124" Grid.Row="10"/>
+        <TextBox Text="{Binding CRP, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="10"/>
+        <Label Content="Ревматоидный фактор" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="134" Grid.Row="11"/>
+        <TextBox Text="{Binding RF, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="11" Grid.Column="1"/>
+        <Label Content="Калий" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="43" Grid.Row="11"/>
+        <TextBox Text="{Binding Potassium, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="11"/>
+        <Label Content="Хлор" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="37" Grid.Row="12"/>
+        <TextBox Text="{Binding Chlorine, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="12" Grid.Column="1"/>
+        <Label Content="Натрий" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="51" Grid.Row="12"/>
+        <TextBox Text="{Binding Sodium, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="12"/>
+        <Label Content="Кальций общий" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="98" Grid.Row="13"/>
+        <TextBox Text="{Binding CommonCalcium, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="13" Grid.Column="1"/>
+        <Label Content="Кальций ионизированный" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="156" Grid.Row="13"/>
+        <TextBox Text="{Binding IonCalcium, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="13"/>
+        <Label Content="Фосфор" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="54" Grid.Row="14"/>
+        <TextBox Text="{Binding Phosphor, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="14" Grid.Column="1"/>
+        <Label Content="Железо" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Grid.Column="3" Height="26" Width="52" Grid.Row="14"/>
+        <TextBox Text="{Binding Ferrum, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}"  HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="4" Grid.Row="14"/>
+        <Label Content="Ферритин" HorizontalAlignment="Left" Margin="9,9,0,0" VerticalAlignment="Top" Height="26" Width="65" Grid.Row="15"/>
+        <TextBox Text="{Binding Ferritin, StringFormat={}{0:G5}, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Stretch" Height="23" Margin="0,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Row="15" Grid.Column="1"/>
+        <Label Content="Г/л" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="1" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="5" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="1,3,-5,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="68" Grid.Row="9" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="63" Grid.Row="11" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="63" Grid.Row="12" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="12" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="13" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="14" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="мкМ/л" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="2" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="мкМ/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="3" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="мкМ/л" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="4" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="мМ/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="6" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ммоль/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="7" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="мМ/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="8" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="0,9,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="59" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,5,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="58" Grid.Row="1" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,6,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="58" Grid.Row="2" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,7,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="58" Grid.Row="3" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,4,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="58" Grid.Row="4" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,5,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="59" Grid.Row="5" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,5,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="58" Grid.Row="6" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,5,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="59" Grid.Row="7" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="1,7,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="58" Grid.Row="8" FontWeight="Bold"/>
+        <Label Content="Мг/л" HorizontalAlignment="Left" Margin="1,4,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="59" Grid.Row="10" FontWeight="Bold"/>
+        <Label Content="мМ/л" HorizontalAlignment="Left" Margin="1,5,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="63" Grid.Row="13" FontWeight="Bold"/>
+        <Label Content="мМ/л" HorizontalAlignment="Left" Margin="1,3,0,0" VerticalAlignment="Top" Grid.Column="5" Height="26" Width="63" Grid.Row="14" FontWeight="Bold"/>
+        <Label Content="Мкг/мл" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Height="26" Width="51" Grid.Row="15" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="Ед/л" HorizontalAlignment="Left" Margin="0,6,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="11" Grid.Column="2" FontWeight="Bold"/>
+        <Label Content="мкМ/л" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.Row="10" Grid.Column="2" FontWeight="Bold"/>
+    </Grid>
+</UserControl>

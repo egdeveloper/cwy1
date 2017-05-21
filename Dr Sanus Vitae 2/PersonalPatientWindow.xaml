@@ -1,0 +1,276 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:winform = "clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="SanusVitae.PersonalPatientWindow"
+        Title="Профиль пациента" ResizeMode="CanMinimize" Loaded="Window_Loaded" SizeToContent="WidthAndHeight" Width="775" >
+    <Grid x:Name="dialogPatientPage" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TabControl Grid.RowSpan="5" Grid.ColumnSpan="2">
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="icons/patient.png" Height="32" Width="32"/>
+                        <TextBlock VerticalAlignment="Center"><Run FontSize="14" Text="Данные о пациенте"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="380*"/>
+                        <RowDefinition Height="43*"/>
+                    </Grid.RowDefinitions>
+                    <TabControl Grid.Row="0" BorderBrush="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                        <TabItem Header="Личные данные">
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="504">
+                                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="184" Margin="26,39,0,0" VerticalAlignment="Top" Width="155">
+                                    <Image x:Name="pictureboxPatientPhoto" Source="{Binding Avatar}" Stretch="Fill" AllowDrop="True" Drop="pictureboxPatientPhoto_Drop"/>
+                                </Border>
+                                <Label HorizontalAlignment="Left" Margin="61,223,0,0" VerticalAlignment="Top">
+                                    <Hyperlink x:Name="ОбновитьФотоСсылка" Click="linkUpdatePatientPhoto_Click">
+                                        <Run Text="Обновить фото"/>
+                                    </Hyperlink>
+                                </Label>
+
+                                <Label Content="Фамилия" HorizontalAlignment="Left" Margin="206,71,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="texboxLastName" Text="{Binding LastName, Mode=TwoWay,ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Left" Height="23" Margin="206,96,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+                                <Label Content="Имя" HorizontalAlignment="Left" Margin="206,120,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxFirstName" Text="{Binding FirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Left" Height="23" Margin="206,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+                                <Label Content="Отчество" HorizontalAlignment="Left" Margin="206,167,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxPatronym"  Text="{Binding Patronym, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Left" Height="23" Margin="206,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
+                                <Label Content="Пол" HorizontalAlignment="Left" Margin="495,71,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="comboboxSex" HorizontalAlignment="Left" Margin="495,93,0,0" VerticalAlignment="Top" Width="99" IsEditable="True">
+                                    <ComboBoxItem Content="Мужской"/>
+                                    <ComboBoxItem Content="Женский"/>
+                                </ComboBox>
+                                <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="360,67,0,0" VerticalAlignment="Top"/>
+                                <DatePicker x:Name="datepickerBirthdate" SelectedDate="{Binding Birthdate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="360,93,0,0" VerticalAlignment="Top" Width="121"/>
+                                <Label  Content="Паспортные данные" HorizontalAlignment="Left" Margin="359,122,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxPassport" Text="{Binding Passport, Mode=TwoWay}" HorizontalAlignment="Left" Height="65" Margin="359,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+
+                                <Label Content="Cтрана" HorizontalAlignment="Left" Margin="26,280,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxCountry" Text="{Binding Country, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="26,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                                <Label Content="Регион" HorizontalAlignment="Left" Margin="26,332,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxRegion" Text="{Binding Region, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="26,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                                <Label Content="Населенный пункт" HorizontalAlignment="Left" Margin="26,384,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxCity" Text="{Binding City, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="26,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                                <Label Content="Почтовый индекс" HorizontalAlignment="Left" Margin="26,437,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxPostIndex" Text="{Binding PostIndex, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="26,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161"/>
+                                <Label Content="Адрес (улица, дом, квартира)" HorizontalAlignment="Left" Margin="217,279,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxAddress" Text="{Binding Address, Mode=TwoWay}" HorizontalAlignment="Left" Height="75" Margin="217,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179"/>
+                                <Label Content="Телефон" HorizontalAlignment="Left" Margin="217,384,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxPhoneNumber" Text="{Binding PhoneNumber, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="217,408,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179"/>
+                                <Label Content="Электронный адрес" HorizontalAlignment="Left" Margin="217,437,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxEmail" Text="{Binding Email, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" Margin="217,461,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179"/>
+
+                                <Label Content="Номер карты" HorizontalAlignment="Left" Margin="206,39,0,0" VerticalAlignment="Top"/>
+                                <TextBox HorizontalAlignment="Left" Height="23" Margin="294,39,0,0" TextWrapping="Wrap" Text="{Binding CardNumber, Mode=TwoWay}" VerticalAlignment="Top" Width="300"/>
+                                <Label Content="Место работы" HorizontalAlignment="Left" Margin="413,280,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding JobPlace, Mode=TwoWay}" HorizontalAlignment="Left" Height="78" Margin="413,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+                                <Label Content="Профессия" HorizontalAlignment="Left" Margin="645,279,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding Occupation, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="645,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
+                                <Label Content="Должность" HorizontalAlignment="Left" Margin="645,332,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding Post, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="645,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="209"/>
+                                <Label Content="Характер труда" HorizontalAlignment="Left" Margin="413,384,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding JobConditions, Mode=TwoWay}" HorizontalAlignment="Left" Height="76" Margin="413,409,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="441"/>
+                                <Label Content="Группа крови" HorizontalAlignment="Left" Margin="614,166,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="comboboxBloodGroup" HorizontalAlignment="Left" Margin="615,193,0,0" VerticalAlignment="Top" Width="85" IsEditable="True">
+                                    <ComboBoxItem Content="I"/>
+                                    <ComboBoxItem Content="II"/>
+                                    <ComboBoxItem Content="III"/>
+                                    <ComboBoxItem Content="IV"/>
+                                </ComboBox>
+                                <Label Content="Резус-фактор" HorizontalAlignment="Left" Margin="615,220,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="comboboxRh" HorizontalAlignment="Left" Margin="615,245,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.582,-0.286" IsEditable="True">
+                                    <ComboBoxItem Content="Rh+"/>
+                                    <ComboBoxItem Content="Rh-"/>
+                                </ComboBox>
+                                <ComboBox x:Name="comboboxDisability" HorizontalAlignment="Left" Margin="762,192,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.582,-0.286" IsEditable="True">
+                                    <ComboBoxItem Content="Нет"/>
+                                    <ComboBoxItem Content="I"/>
+                                    <ComboBoxItem Content="II"/>
+                                    <ComboBoxItem Content="III"/>
+                                </ComboBox>
+                                <Label Content="Инвалидность" HorizontalAlignment="Left" Margin="762,167,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Страховой полис" HorizontalAlignment="Left" Margin="614,10,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="textboxOMI" Text="{Binding OMICard, Mode=TwoWay}" HorizontalAlignment="Left" Height="72" Margin="614,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" RenderTransformOrigin="0.475,0.043"/>
+                                <Label Content="ИНН" HorizontalAlignment="Left" Margin="615,113,0,0" VerticalAlignment="Top" Width="104"/>
+                                <TextBox Text="{Binding TIN, Mode=TwoWay, UpdateSourceTrigger=LostFocus, ValidatesOnDataErrors=True}" Style="{StaticResource InputErrorStyle}" HorizontalAlignment="Left" Height="23" Margin="615,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Медицинские данные">
+                            <Grid Height="359">
+                                <Label Content="Жалобы при поступлении / первичном обращении" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding Complaints, Mode=TwoWay}" HorizontalAlignment="Left" Height="98" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295"/>
+                                <Label Content="Сопутствующее заболевания" HorizontalAlignment="Left" Margin="325,10,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding AssociatedDisease, Mode=TwoWay}" HorizontalAlignment="Left" Height="98" Margin="325,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
+                                <Label Content="Лечение до поступления " HorizontalAlignment="Left" Margin="10,149,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding Premedication, Mode=TwoWay}" HorizontalAlignment="Left" Height="98" Margin="10,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295"/>
+                                <Label Content="Назначения до поступления" HorizontalAlignment="Left" Margin="585,10,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding PreMedicalSupplies, Mode=TwoWay}" HorizontalAlignment="Left" Height="98" Margin="585,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
+                                <Label Content="Описание камня до поступления" HorizontalAlignment="Left" Margin="325,149,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding PreUreaStoneDescription, Mode=TwoWay}" HorizontalAlignment="Left" Height="98" Margin="325,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
+                                <Label Content="Вредные привычки" HorizontalAlignment="Left" Margin="585,149,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding BadHabits, Mode=TwoWay}" HorizontalAlignment="Left" Height="98" Margin="585,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
+                                <Label Content="Длительность заболевания" HorizontalAlignment="Left" Margin="10,283,0,0" VerticalAlignment="Top"/>
+                                <TextBox Text="{Binding DiseaseDuration, Mode=TwoWay}" HorizontalAlignment="Left" Height="26" Margin="10,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295"/>
+
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <Button x:Name="buttonUpdatePatientRecord" Click="buttonUpdatePatientRecord_Click"  Content="OK" HorizontalAlignment="Left" Margin="621,5,0,0" VerticalAlignment="Top" Width="116" Grid.Row="1" Height="22"/>
+                    <Button x:Name="buttonClear" Click="buttonClear_Click" Content="Очистить" HorizontalAlignment="Left" Margin="755,5,0,0" VerticalAlignment="Top" Width="116" Grid.Row="1" Height="22"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="icons/analysis.png" Height="32" Width="32"/>
+                        <TextBlock VerticalAlignment="Center"><Run FontSize="14" Text="Анализы"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="157*"/>
+                        <RowDefinition Height="419*"/>
+                        <RowDefinition Height="157*"/>
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="1" HorizontalAlignment="Stretch" Margin="12,0,12,12" VerticalAlignment="Stretch" Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="125*"/>
+                                <ColumnDefinition Width="106*"/>
+                                <ColumnDefinition Width="69*"/>
+                                <ColumnDefinition Width="39*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="67*"/>
+                                <RowDefinition Height="49*"/>
+                                <RowDefinition Height="58"/>
+                            </Grid.RowDefinitions>
+                            <DatePicker Name="datepickerTestDate" SelectedDate="{Binding Date, Mode=TwoWay}" HorizontalAlignment="Left" Margin="150,19,0,0" VerticalAlignment="Top" Width="111" Grid.Column="0" Grid.Row="0" Height="24" FontSize="14"/>
+                            <Label Content="Дата сдачи анализов" HorizontalAlignment="Left" Margin="1,17,0,0" VerticalAlignment="Top" Height="26" Width="144" FontSize="14"/>
+                            <ComboBox x:Name="comboboxTestType" HorizontalAlignment="Left" Margin="93,19,0,0" VerticalAlignment="Top" Width="132" RenderTransformOrigin="-0.217,0.381" SelectionChanged="comboboxTestType_SelectionChanged" Grid.Column="1" Height="24" FontSize="14">
+                                <ComboBoxItem Content="Общий анализ крови"/>
+                                <ComboBoxItem Content="Биохимический анализ крови"/>
+                                <ComboBoxItem Content="Суточная экскреция"/>
+                                <ComboBoxItem Content="Хромотография"/>
+                                <ComboBoxItem Content="Общий анализ мочи"/>
+                                <ComboBoxItem Content="Титриметрия"/>
+                                <ComboBoxItem Content="Мочевой камень"/>
+                            </ComboBox>
+                            <Label Content="Тип анализа" HorizontalAlignment="Left" Margin="5,17,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="88" FontSize="14"/>
+                            <Button x:Name="buttonAddTest" Content="Сохранить анализы" HorizontalAlignment="Stretch" Margin="11,17,0,0" VerticalAlignment="Top" Click="buttonUpdateTestRecord_Click" IsEnabled="False" Grid.Column="2" Height="26" FontSize="14"/>
+                            <Button x:Name="buttonClearTestRecord" Content="Очистить" HorizontalAlignment="Stretch" Margin="8,17,0,0" VerticalAlignment="Top" Width="76" IsEnabled="False" Grid.Column="3" Height="25" FontSize="14"/>
+                            <Label Content="Лечение до анализов" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="149" Grid.Row="1" FontSize="14"/>
+                            <TextBox Name="textboxTreatment" HorizontalAlignment="Stretch" Grid.Row="2" Grid.ColumnSpan="4"/>
+                        </Grid>
+                    </Border>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="containerTestControl" VerticalAlignment="Stretch" Margin="0,0,0,12">
+                            <StackPanel.CommandBindings>
+
+                            </StackPanel.CommandBindings>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+                        <Grid x:Name="gridAttachments" Background="Wheat" Height="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="46*"/>
+                                <RowDefinition Height="111*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="43*"/>
+                                    <ColumnDefinition Width="43*"/>
+                                    <ColumnDefinition Width="623*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="buttonAddAttachment" Grid.Column="0" Content="{StaticResource AddIcon}" Width="32" Height="32" Margin="5" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="buttonAddAttachment_Click" ToolTip="Добавить прикрепляемый файл к анализу"/>
+                                <Button x:Name="buttonRemoveAttachment" Grid.Column="1" Content="{StaticResource RemoveIcon}" Width="32" Height="32" Margin="5" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="buttonRemoveAttachment_Click" ToolTip="Удалить прикрепляемый файл к анализу"/>
+                            </Grid>
+                            <ListBox x:Name="listboxAttachments" ItemsSource="{Binding attachments_}" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="icons/health2.png" Height="32" Width="32"/>
+                        <TextBlock VerticalAlignment="Center"><Run FontSize="14" Text="Динамика показателей"/></TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Width="760">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="171*"/>
+                        <ColumnDefinition Width="260*"/>
+                        <ColumnDefinition Width="198*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="103*"/>
+                        <RowDefinition Height="473*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,0,0,10" Grid.ColumnSpan="3">
+                        <ComboBox Name="comboboxTestTypeDynamics" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="149" SelectionChanged="comboboxTestTypeDynamics_Selected">
+                            <ComboBoxItem Content="Общий анализ крови"/>
+                            <ComboBoxItem Content="Биохимический анализ крови"/>
+                            <ComboBoxItem Content="Суточная экскреция"/>
+                            <ComboBoxItem Content="Хромотография"/>
+                            <ComboBoxItem Content="Общий анализ мочи"/>
+                            <ComboBoxItem Content="Титриметрия"/>
+                        </ComboBox>
+                        <Label Content="Тип анализов" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
+                        <DatePicker Name="datepickerFrom" HorizontalAlignment="Left" Margin="190,47,0,0" VerticalAlignment="Top"/>
+                        <DatePicker Name="datepickerTo" HorizontalAlignment="Left" Margin="321,45,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Период сдачи анализов" HorizontalAlignment="Left" Margin="186,16,0,0" VerticalAlignment="Top"/>
+                        <Label Content="с" HorizontalAlignment="Left" Margin="174,44,0,0" VerticalAlignment="Top"/>
+                        <Label Content="по" HorizontalAlignment="Left" Margin="297,43,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Показатель" HorizontalAlignment="Left" Margin="439,16,0,0" VerticalAlignment="Top"/>
+                        <ComboBox Name="comboboxIndexType" HorizontalAlignment="Left" Margin="439,48,0,0" VerticalAlignment="Top" Width="162" IsEnabled="False"/>
+                        <Button Name="buttonPlotGraph" Content="Построить график" HorizontalAlignment="Left" Margin="615,48,0,0" VerticalAlignment="Top" Width="135" Click="buttonPlotGraph_Click"/>
+
+                    </Grid>
+                    <Grid Name="graphArea" Grid.Row="1" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Margin="0,0,0,17">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                            <Canvas Name="canvasGraph">
+                                <chartingToolkit:Chart x:Name="chartControl" Title="{Binding}" VerticalAlignment="Stretch" Height="450" Background="White" HorizontalAlignment="Stretch">
+
+                                    <chartingToolkit:LineSeries x:Name="linechartDynamics" Title="{Binding}" IndependentValueBinding="{Binding Key}" DependentValueBinding="{Binding Value}" IsSelectionEnabled="True" Background="White">
+                                        <chartingToolkit:LineSeries.DependentRangeAxis>
+                                            <chartingToolkit:LinearAxis x:Name="axisY" Orientation="Y" Title="{Binding}" ShowGridLines="True" Background="White">
+                                                <chartingToolkit:LinearAxis.TitleStyle>
+                                                    <Style TargetType="Control">
+                                                        <Setter Property="FontWeight" Value="Bold"/>
+                                                        <Setter Property="FontSize" Value="14"/>
+                                                    </Style>
+                                                </chartingToolkit:LinearAxis.TitleStyle>
+                                            </chartingToolkit:LinearAxis>
+                                        </chartingToolkit:LineSeries.DependentRangeAxis>
+                                        <chartingToolkit:LineSeries.LegendItemStyle>
+                                            <Style TargetType="{x:Type chartingToolkit:LegendItem}">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </Style>
+                                        </chartingToolkit:LineSeries.LegendItemStyle>
+                                    </chartingToolkit:LineSeries>
+
+                                    <chartingToolkit:Chart.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Name="contextMenuItemCopyIntoClipboard" Header="Скопировать в буффер" Click="contextMenuItemCopyIntoClipboard_Click"/>
+                                            <MenuItem Name="contextMenuitemSaveAs" Header="Сохранить как..." Click="contextMenuitemSaveAs_Click"/>
+                                        </ContextMenu>
+                                    </chartingToolkit:Chart.ContextMenu>
+                                    <chartingToolkit:Chart.LegendStyle>
+                                        <Style TargetType="Control">
+                                            <Setter Property="Width" Value="0"/>
+                                            <Setter Property="Height" Value="0"/>
+                                        </Style>
+                                    </chartingToolkit:Chart.LegendStyle>
+                                </chartingToolkit:Chart>
+                            </Canvas>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</Window>
